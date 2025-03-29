@@ -147,7 +147,7 @@ GameObject:
   - component: {fileID: 493847258401167132}
   m_Layer: 6
   m_Name: Collider for on
-  m_TagString: Untagged
+  m_TagString: LightSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -238,7 +238,7 @@ GameObject:
   - component: {fileID: 3979219959479161184}
   m_Layer: 0
   m_Name: Light Sensor
-  m_TagString: Untagged
+  m_TagString: LightSensor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
