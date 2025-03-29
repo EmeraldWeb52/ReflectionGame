@@ -337,9 +337,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 236594621}
-  - component: {fileID: 236594622}
   - component: {fileID: 236594623}
   - component: {fileID: 236594624}
+  - component: {fileID: 236594627}
+  - component: {fileID: 236594626}
+  - component: {fileID: 236594625}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -365,26 +367,6 @@ Transform:
   - {fileID: 1973250473}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &236594622
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 236594619}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 137de1738290f664bb355794d09f5dbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 9
-  groundCheck: {fileID: 395804177}
-  checkRadius: 0.5
-  whatisGround:
-    serializedVersion: 2
-    m_Bits: 0
-  jumpForce: 700
-  extraJumpsValue: 1
 --- !u!50 &236594623
 Rigidbody2D:
   serializedVersion: 5
@@ -401,7 +383,7 @@ Rigidbody2D:
   m_LinearDamping: 0
   m_AngularDamping: 0.05
   m_GravityScale: 2.55
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: f48d88d72c20aa349a1d7cf68fe4c622, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -458,6 +440,51 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1.0967789, y: 0.95310205}
   m_EdgeRadius: 0
+--- !u!114 &236594625
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236594619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6dd4678b6bb349e47bccd18c98c504bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groundCheck: {fileID: 395804177}
+  checkRadius: 1
+  whatisGround:
+    serializedVersion: 2
+    m_Bits: 8
+  jumpForce: 600
+  extraJumpsValue: 0
+  jumpQueueTime: 0.15
+--- !u!114 &236594626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236594619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d52632177cda05479d5724e5a156927, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+--- !u!114 &236594627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 236594619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f336c0c2e07f3dc499ca3c2c5e525b70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &379627688
 GameObject:
   m_ObjectHideFlags: 0
@@ -1024,7 +1051,7 @@ GameObject:
   - component: {fileID: 1349762190}
   - component: {fileID: 1349762189}
   - component: {fileID: 1349762191}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1243,7 +1270,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1681689558}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Grounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
