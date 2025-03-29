@@ -6,10 +6,11 @@ public class SpriteWork : ScriptableObject
 {
     public List<Sprite> sprites;
 
-    public bool Legality(int Index)
+    //Checks if sprite's needed index is allowed
+    public bool Legality(uint Index)
     {
-         if (sprites.Count >= (Index + 1))
-               return sprites[Index] != null;
+         if (sprites.Count >= (Index + 1) && sprites.Count != 0)
+               return sprites[(int)Index] != null;
          else
                return false;
     }
