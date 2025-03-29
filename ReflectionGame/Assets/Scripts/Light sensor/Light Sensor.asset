@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 673acba20b499aa49b2d156b509eaba9, type: 3}
+  m_Name: Light Sensor
+  m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -6557859502372029982, guid: e71dd8586a4283d4eb794d46bc6fa5ef, type: 3}
+  - {fileID: -3312903019156591073, guid: e2c28f78c3acd8e45afe6ef2c3de464d, type: 3}
