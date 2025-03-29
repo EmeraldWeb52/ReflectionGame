@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 643351913912430587}
   - component: {fileID: 6201194008728814572}
-  - component: {fileID: 8443908976789634717}
   - component: {fileID: 6572383526883483914}
   m_Layer: 3
   m_Name: Square
@@ -89,20 +88,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8443908976789634717
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 706289365253711682}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3dc55c9774bb17489e1440b52e8153b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sprRenderer: {fileID: 6201194008728814572}
-  sprites: {fileID: 11400000, guid: cbebcba4bfd012348869ef1d95d32e0d, type: 2}
 --- !u!61 &6572383526883483914
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -159,6 +144,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1038678060839118978}
   - component: {fileID: 7453693990911122351}
+  - component: {fileID: 493847258401167132}
   m_Layer: 6
   m_Name: Collider for on
   m_TagString: Untagged
@@ -227,6 +213,20 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 0.3, y: 0.25}
   m_EdgeRadius: 0
+--- !u!114 &493847258401167132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7141333780086779329}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e3dc55c9774bb17489e1440b52e8153b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sprRenderer: {fileID: 6201194008728814572}
+  sprites: {fileID: 11400000, guid: cbebcba4bfd012348869ef1d95d32e0d, type: 2}
 --- !u!1 &8473378623800509422
 GameObject:
   m_ObjectHideFlags: 0
