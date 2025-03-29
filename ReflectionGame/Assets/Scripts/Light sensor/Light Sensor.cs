@@ -10,7 +10,7 @@ public class LightSensor : MonoBehaviour
      bool state;
      void Start()
      {
-
+          SetTurnedOff();
      }
      //this monobehaviour script is gonna be on the layered collider, so ideal
     public void SetTurnedOn()
