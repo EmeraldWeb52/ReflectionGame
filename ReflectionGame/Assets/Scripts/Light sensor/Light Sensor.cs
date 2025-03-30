@@ -12,14 +12,17 @@ public class LightSensor : MonoBehaviour
      void Start()
      {
           SetTurnedOff();
+          if (Laser.LaserDetectorTag != this.gameObject.tag)
+          {
+               Laser.LaserDetectorTag = this.gameObject.tag;
+          }
      }
-     //this monobehaviour script is gonna be on the layered collider, so ideal
+     //this monobehaviour script is gonna be on the collider, so ideal
 
 
      //Turns off the Sensor's light and changes sprite,
     public void SetTurnedOn()
     {
-         StopCoroutine(RefreshConsequences());
          state = true;
          if (1 < sprites.sprites.Count && sprRenderer)
          {
@@ -45,15 +48,24 @@ public class LightSensor : MonoBehaviour
     //IEnumerator for automatic shutoff
     public IEnumerator RefreshConsequences()
     {
-         yield return new WaitUntil(() => (new WaitForSeconds(0.5f) == null));
+         yield return new WaitForSeconds(0.5f);
          SetTurnedOff();
+    }
+
+    IEnumerator NukeCoroutine(string Ienum)
+    {
+         for (byte i = 0; 100 >= i; i++)
+         {
+              StopCoroutine(Ienum);
+              yield return null;
+         }
     }
     //Refresh for when ANYTHING IMPORTANT IS MOVED
     public static void Refresh()
     {
          foreach (LightSensor lightSens in Object.FindObjectsByType<LightSensor>(FindObjectsSortMode.None))
          {
-              lightSens.StartCoroutine(lightSens.RefreshConsequences());
+              if (lightSens.state) lightSens.StartCoroutine(lightSens.RefreshConsequences());
          }
     }
 }
