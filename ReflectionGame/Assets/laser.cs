@@ -68,7 +68,7 @@ public class Laser : MonoBehaviour
 
         //OmniButton based variables
         bool Stronglaser = false;  /* for--->>*/ float distanceLeft = StrongLaserCutRange;
-        bool explosionLaser = false;
+     //   bool explosionLaser = false;
         int stupidReflects = 0;
         bool soonToEnd;
 
@@ -119,10 +119,10 @@ public class Laser : MonoBehaviour
                      {
                         Stronglaser = true;
                      }
-                     if (omni.Explosiv)
-                     {
-                          explosionLaser = true;
-                     }
+               //      if (omni.Explosiv)
+               //      {
+               //           explosionLaser = true;
+               //      }
                      if (omni.Reflectionableing)
                      {
                           stupidReflects++;
