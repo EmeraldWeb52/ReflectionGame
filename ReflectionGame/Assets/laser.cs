@@ -39,7 +39,7 @@ public class Laser : MonoBehaviour
         points.Clear();
         points.Add(start);
 
-        int UltraMegaNecess = 0;
+        int DebugInt = 0;
         //makes sure it only reflect <100 timse
         for (int i = 0; i < maxReflections; i++)
         {
@@ -53,7 +53,7 @@ public class Laser : MonoBehaviour
                 {
                     dir = Vector2.Reflect(dir, hit.normal);
                     start = hit.point + dir * 0.1f;
-                    UltraMegaNecess++;
+                    DebugInt++;
                     continue;
                 }
 
@@ -61,12 +61,12 @@ public class Laser : MonoBehaviour
                 if (LaserDetectorTag != "" && hit.collider.gameObject.tag == LaserDetectorTag && hit.collider.gameObject.GetComponent<LightSensor>())
                 {
                      hit.collider.gameObject.GetComponent<LightSensor>().SetTurnedOn();
-                     UltraMegaNecess++;
+                     DebugInt++;
                      break;
                 }
                 else
                 {
-                     UltraMegaNecess++;
+                     DebugInt++;
                      break;
                 }
             }
@@ -78,7 +78,7 @@ public class Laser : MonoBehaviour
                 break;
             }
         }
-        Debug.Log("Loop does " + UltraMegaNecess + " times lasering");
+        Debug.Log("Loop does " + DebugInt + " times lasering");
         //renders the line
         lineRen.positionCount = points.Count;
         lineRen.SetPositions(points.ToArray());
