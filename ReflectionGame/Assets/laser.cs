@@ -52,7 +52,7 @@ public class Laser : MonoBehaviour
                 if (reflectables.Contains(hit.collider.tag))
                 {
                     dir = Vector2.Reflect(dir, hit.normal);
-                    start = hit.point + dir * 0.05f;
+                    start = hit.point + dir * 0.1f;
                     UltraMegaNecess++;
                     continue;
                 }
