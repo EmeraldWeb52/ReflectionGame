@@ -66,8 +66,6 @@ public class Laser : MonoBehaviour
                 {
                      break;
                 }
-                //add code for hitting non reflectable here
-
             }
 
             //if laser hits nothing, only go 100 units
