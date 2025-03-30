@@ -1,13 +1,15 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
-
+using UnityEngine.Events;
 public class LightSensor : MonoBehaviour
 {
      [SerializeField] SpriteRenderer sprRenderer;
      [SerializeField] SpriteWork sprites;
-
+     [SerializeField] UnityEvent UE;
      bool state;
+
+     bool activationPerhaps;
      //self explanatory, it's for at start
      void Start()
      {
@@ -20,6 +22,15 @@ public class LightSensor : MonoBehaviour
      //this monobehaviour script is gonna be on the collider, so ideal
 
 
+
+     void Update()
+     {
+          if (activationPerhaps && state)
+          {
+               UE.Invoke();
+               activationPerhaps = false;
+          }
+     }
      //Turns off the Sensor's light and changes sprite,
     public void SetTurnedOn()
     {
@@ -35,6 +46,7 @@ public class LightSensor : MonoBehaviour
     public void SetTurnedOff()
     {
          state = false;
+         activationPerhaps = true;
          if (1 < sprites.sprites.Count && sprRenderer)
          {
               if (sprites.Legality(0)) sprRenderer.sprite = sprites.sprites[0];
