@@ -55,15 +55,14 @@ public class Laser : MonoBehaviour
                     start = hit.point + dir * 0.05f;
                 }
 
-                else
+                
+                if (LaserDetectorTag != "" && hit.collider.gameObject.tag == LaserDetectorTag && hit.collider.gameObject.GetComponent<LightSensor>())
                 {
-                    if (LaserDetectorTag != "" && hit.collider.gameObject.tag == LaserDetectorTag && hit.collider.gameObject.GetComponent<LightSensor>())
-                    {
-                         hit.collider.gameObject.GetComponent<LightSensor>().SetTurnedOn();
-                    }
-                    break;
-                    //add code for hitting non reflectable here
+                     hit.collider.gameObject.GetComponent<LightSensor>().SetTurnedOn();
                 }
+                break;
+                //add code for hitting non reflectable here
+                
             }
 
             //if laser hits nothing, only go 100 units
