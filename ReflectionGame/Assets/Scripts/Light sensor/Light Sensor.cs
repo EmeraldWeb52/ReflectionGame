@@ -77,13 +77,4 @@ public class LightSensor : MonoBehaviour
          SetTurnedOff();
     }
 
-    IEnumerator NukeCoroutine(string Ienum)
-    {
-         for (byte i = 0; 100 >= i; i++)
-         {
-              StopCoroutine(Ienum);
-              yield return null;
-         }
-    }
-
 }
