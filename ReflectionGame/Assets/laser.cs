@@ -60,8 +60,8 @@ public class Laser : MonoBehaviour
                 {
                      hit.collider.gameObject.GetComponent<LightSensor>().SetTurnedOn();
                 }
-                break;
-                //add code for hitting non reflectable here
+                
+                
                 
             }
 
