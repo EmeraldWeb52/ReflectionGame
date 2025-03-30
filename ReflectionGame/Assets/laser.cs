@@ -39,7 +39,7 @@ public class Laser : MonoBehaviour
         points.Clear();
         points.Add(start);
 
-        int UltraMegaNecess;
+        int UltraMegaNecess = 0;
         //makes sure it only reflect <100 timse
         for (int i = 0; i < maxReflections; i++)
         {
