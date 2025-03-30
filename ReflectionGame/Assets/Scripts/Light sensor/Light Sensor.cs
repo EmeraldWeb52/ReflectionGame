@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine.Events;
 public class LightSensor : MonoBehaviour
 {
@@ -8,7 +9,7 @@ public class LightSensor : MonoBehaviour
      [SerializeField] SpriteWork sprites;
      [SerializeField] UnityEvent UE;
      bool state;
-
+     bool proven;
      bool activationPerhaps;
      //self explanatory, it's for at start
      void Start()
@@ -35,6 +36,8 @@ public class LightSensor : MonoBehaviour
     public void SetTurnedOn()
     {
          state = true;
+         proven = true;
+         StopCoroutine("RefreshConsequences");
          if (1 < sprites.sprites.Count && sprRenderer)
          {
               if (sprites.Legality(1)) sprRenderer.sprite = sprites.sprites[1];
@@ -60,7 +63,17 @@ public class LightSensor : MonoBehaviour
     //IEnumerator for automatic shutoff
     public IEnumerator RefreshConsequences()
     {
+         if (proven)
+          {
+               proven = false;
+               yield break;
+          }
          yield return new WaitForSeconds(0.5f);
+         if (proven)
+         {
+               proven = false;
+               yield break;
+         }
          SetTurnedOff();
     }
 
@@ -72,12 +85,5 @@ public class LightSensor : MonoBehaviour
               yield return null;
          }
     }
-    //Refresh for when ANYTHING IMPORTANT IS MOVED
-    public static void Refresh()
-    {
-         foreach (LightSensor lightSens in Object.FindObjectsByType<LightSensor>(FindObjectsSortMode.None))
-         {
-              if (lightSens.GetState()) lightSens.StartCoroutine(lightSens.RefreshConsequences());
-         }
-    }
+
 }

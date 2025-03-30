@@ -6,12 +6,15 @@ using UnityEngine;
 public class Laser : MonoBehaviour
 {
     [SerializeField] List<string> reflectables;
+    [SerializeField] bool doIndependent;
     public static string LaserDetectorTag;
     public static string OmniButtonTag;
     public LineRenderer lineRen;
     public Transform firePoint;
     public const int maxReflections = 20; // safeguard
     public const float StrongLaserCutRange = 0.75f;
+    bool dontHideLineRend_flag;
+    public float timing;
     delegate void CarriedFunctionality(Vector2 activity, GameObject Affected);
     void Start()
     {
@@ -24,15 +27,34 @@ public class Laser : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Space))
+
+        if (Input.GetKey(KeyCode.Space) || doIndependent)
         {
             DrawLaser();
             lineRen.enabled = true;
         }
-        else
+        else if (!dontHideLineRend_flag)
         {
-            lineRen.enabled = false;
+             lineRen.enabled = false;
         }
+    }
+    public void FiveSecondsOfShooting()
+    {
+         StartCoroutine(DrawLaserForSeconds(5f));
+    }
+    IEnumerator DrawLaserForSeconds(float seconds)
+    {
+         timing = Time.time;
+         if (dontHideLineRend_flag) yield break;
+         dontHideLineRend_flag = true;
+          lineRen.enabled = true;
+         for (; Time.time <= timing + seconds;)
+         {
+              DrawLaser();
+              yield return null;
+         }
+         Debug.Log("Done");
+         dontHideLineRend_flag = false;
     }
 
     public void DrawLaser()
@@ -48,10 +70,10 @@ public class Laser : MonoBehaviour
         bool Stronglaser = false;  /* for--->>*/ float distanceLeft = StrongLaserCutRange;
         bool explosionLaser = false;
         int stupidReflects = 0;
+        bool soonToEnd;
 
-
-        short DebugInt = 0;
-        //makes sure it only reflect <100 timse
+     //   short DebugInt = 0;
+        //makes sure it only reflect < maxReflections timse
         for (int i = 0; i < maxReflections; i++)
         {
             RaycastHit2D hit = Physics2D.Raycast(start, dir);
@@ -64,7 +86,7 @@ public class Laser : MonoBehaviour
                 {
                     dir = Vector2.Reflect(dir, hit.normal);
                     start = hit.point + dir * 0.1f;
-                    DebugInt++;
+          //          DebugInt++;
                     continue;
                 }
 
@@ -73,31 +95,29 @@ public class Laser : MonoBehaviour
                    RaycastHit2D raycast1 = Physics2D.Raycast(start, dir, distanceLeft);
                    RaycastHit2D raycast2 = Physics2D.Raycast(raycast1.point + dir / 10, dir, distanceLeft - raycast1.distance);
                    Collider2D collider = raycast1.collider;
-                   if (raycast2 == false && collider.GetType() != typeof(EdgeCollider2D)) break;
+                   if (raycast2 == false && collider is EdgeCollider2D) break;
                    else
                    {
                         start = raycast2.point + dir / 10;
                         continue;
                    }
                 }
+                //Laser detector
                 if (LaserDetectorTag != "" && hit.collider.gameObject.tag == LaserDetectorTag && hit.collider.gameObject.GetComponent<LightSensor>())
                 {
                      hit.collider.gameObject.GetComponent<LightSensor>().SetTurnedOn();
-                     DebugInt++;
+          //           DebugInt++;
                      break;
                 }
+                //Omnibutton detection
                 if (OmniButtonTag != "" && hit.collider.gameObject.tag == OmniButtonTag && hit.collider.gameObject.GetComponent<OmniButton>())
                 {
+          //           DebugInt++;
                      OmniButton omni = hit.collider.gameObject.GetComponent<OmniButton>();
-                     if (omni.Reflects)
-                     {
-                          dir = Vector2.Reflect(dir, hit.normal);
-                          start = hit.point + dir * 0.1f;
-                          DebugInt++;
-                     }
+                     omni.SetTurnedOn();
                      if (omni.CutDanger)
                      {
-                         Stronglaser = true;
+                        Stronglaser = true;
                      }
                      if (omni.Explosiv)
                      {
@@ -107,14 +127,21 @@ public class Laser : MonoBehaviour
                      {
                           stupidReflects++;
                      }
-                     continue;
+                     if (omni.Reflects)
+                     {
+                          dir = Vector2.Reflect(dir, hit.normal);
+                          start = hit.point + dir * 0.1f;
+                          continue;
+                     }
+                     else soonToEnd = true;
+
                 }
 
                 if (stupidReflects > 0)
                 {
                      dir = Vector2.Reflect(dir, hit.normal);
                      start = hit.point + dir * 0.1f;
-                     DebugInt++;
+               //      DebugInt++;
                      continue;
                 }
                 break;
@@ -127,7 +154,7 @@ public class Laser : MonoBehaviour
                 break;
             }
         }
-        Debug.Log("Loop does " + DebugInt + " times lasering");
+       // Debug.Log("Loop does " + DebugInt + " times lasering");
         //renders the line
         lineRen.positionCount = points.Count;
         lineRen.SetPositions(points.ToArray());
@@ -139,7 +166,7 @@ public class Laser : MonoBehaviour
          for (;;)
          {
              yield return new WaitUntil(() => !Input.GetKey(KeyCode.Space));
-             LightSensor.Refresh();
+             ButtonManagement.Refresh();
              yield return new WaitUntil(() => Input.GetKey(KeyCode.Space));
          }
     }

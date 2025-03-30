@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673acba20b499aa49b2d156b509eaba9, type: 3}
   m_Name: Type
   m_EditorClassIdentifier: 
-  sprites: []
+  sprites:
+  - {fileID: -5742839864189589509, guid: 4ad902c8cdf9cb64aac595e32b181480, type: 3}
+  - {fileID: 8094472325823903687, guid: f6cef914ca0b3a5479c9a7bfd2ddf2cf, type: 3}
+  - {fileID: 1793135944761595434, guid: cee93cb5f76299843a56e798fed8a922, type: 3}
+  - {fileID: 7012761177666003978, guid: 9d32a0da566142845a44fbc1a4ef4840, type: 3}

@@ -12,4 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 673acba20b499aa49b2d156b509eaba9, type: 3}
   m_Name: Logic
   m_EditorClassIdentifier: 
-  sprites: []
+  sprites:
+  - {fileID: 1164661408789579303, guid: 8ce8c85b933905245b9ba3b65652469b, type: 3}
+  - {fileID: 5476115689740850778, guid: 8303cac7fd8698541aa73fb0c75b7413, type: 3}
+  - {fileID: -5014719871681279078, guid: ac2355dbb9aca274ebf65a75f59012f0, type: 3}
+  - {fileID: 4410111313752646171, guid: 461945b180ae9e34ca784d46b5e4c774, type: 3}

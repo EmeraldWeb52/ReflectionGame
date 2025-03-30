@@ -1,4 +1,8 @@
 using UnityEngine;
+using UnityEngine.UI;
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine.Events;
 public enum Statesing
 {
      AND,
@@ -18,6 +22,7 @@ public class OmniButton : MonoBehaviour
 
      [Header("Functionality")]
      public bool ON;
+     [SerializeField] UnityEvent UniEng;
      //References are for LOGIC
      public OmniButton[] References;
      public Statesing State;
@@ -25,9 +30,11 @@ public class OmniButton : MonoBehaviour
      [Header("Necessary")]
      [SerializeField] SpriteWork Abil;
      [SerializeField] SpriteWork States;
+     bool proven;
 
      [SerializeField] SpriteRenderer[] AbilitiesShow;
      [SerializeField] SpriteRenderer StateShow;
+     [SerializeField] TextMesh textmesh;
 
      [Header("Kinda Necessary")]
      [SerializeField] GameObject explosion;
@@ -42,7 +49,52 @@ public class OmniButton : MonoBehaviour
               if (Abil.Legality(i) && AbilitiesShow[i]) AbilitiesShow[i].sprite = Abil.sprites[i];
          }
          if (States.Legality((int)State) && StateShow) StateShow.sprite = States.sprites[(int)State];
+         StartCoroutine(Checking());
+         StartCoroutine(Trivia());
     }
+
+    void Update()
+    {
+         if (textmesh) textmesh.text = "Current State: " + (ON ? "ON" : "OFF");
+    }
+    // Checking activates UnityEvent when The OmniButtons are true AND when it's on
+    IEnumerator Checking()
+    {
+         for (;;)
+         {
+              if (GetCheck(true) && ON)
+              {
+                   UniEng.Invoke();
+                   while (!(GetCheck(true) && ON))
+                   {
+                         yield return new WaitForSeconds(0.5f);
+                   }
+
+              }
+              yield return new WaitForSeconds(0.1f);
+         }
+    }
+    IEnumerator Trivia()
+    {
+         for (;;)
+         {
+              yield return new WaitForSeconds(3f);
+              if (States.Legality((int)State) && StateShow) StateShow.sprite = States.sprites[(int)State];
+         }
+    }
+
+    public void SetTurnedOn()
+    {
+         ON = true;
+         proven = true;
+    }
+
+    public void SetTurnedOff()
+    {
+         ON = false;
+    }
+
+
     public void Explosion(Vector2 position, GameObject affected)
     {
          if (stExplosion) Instantiate(stExplosion, position, Quaternion.Euler(0,0,0));
@@ -58,7 +110,11 @@ public class OmniButton : MonoBehaviour
                     foreach (OmniButton omni in References)
                     {
                          if (!omni) continue;
-                         if (omni.ON != state) return false;
+                         Debug.Log("Checked OmniButton is " + (omni.ON ? "on" : "off"));
+                         if (omni.ON != state)
+                         {
+                              return false;
+                         }
                     }
                     return true;
               //ONE is true, then on
@@ -66,7 +122,10 @@ public class OmniButton : MonoBehaviour
                     foreach (OmniButton omni in References)
                     {
                          if (!omni) continue;
-                         if (omni.ON == state) return true;
+                         if (omni.ON == state)
+                         {
+                              return true;
+                         }
                     }
                     return false;
               //EXCLUSIVITY
@@ -76,7 +135,11 @@ public class OmniButton : MonoBehaviour
                    {
                         if (!omni) continue;
                         if (!oneHas && omni.ON == state) oneHas = true;
-                        if (oneHas && omni.ON == state) return false;
+                        if (oneHas && omni.ON == state)
+                        {
+
+                             return false;
+                        }
                    }
                    return false;
               //opposite of first check
@@ -88,5 +151,20 @@ public class OmniButton : MonoBehaviour
                     return true;
          }
          return false;
+    }
+    public IEnumerator RefreshConsequences()
+    {
+         if (proven)
+        {
+         proven = false;
+         yield break;
+        }
+         yield return new WaitForSeconds(0.5f);
+         if (proven)
+         {
+               proven = false;
+               yield break;
+         }
+         ON = false;
     }
 }
