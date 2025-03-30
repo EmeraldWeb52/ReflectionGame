@@ -53,16 +53,21 @@ public class Laser : MonoBehaviour
                 {
                     dir = Vector2.Reflect(dir, hit.normal);
                     start = hit.point + dir * 0.05f;
+                    continue;
                 }
 
-                
+
                 if (LaserDetectorTag != "" && hit.collider.gameObject.tag == LaserDetectorTag && hit.collider.gameObject.GetComponent<LightSensor>())
                 {
                      hit.collider.gameObject.GetComponent<LightSensor>().SetTurnedOn();
+                     break;
                 }
-                break;
+                else
+                {
+                     break;
+                }
                 //add code for hitting non reflectable here
-                
+
             }
 
             //if laser hits nothing, only go 100 units
