@@ -2,14 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Laser : MonoBehaviour
 {
     [SerializeField] List<string> reflectables;
     public static string LaserDetectorTag;
+    public static string OmniButtonTag;
     public LineRenderer lineRen;
     public Transform firePoint;
-    public int maxReflections = 20; // safeguard
-
+    public const int maxReflections = 20; // safeguard
+    public const float StrongLaserCutRange = 0.75f;
+    delegate void CarriedFunctionality(Vector2 activity, GameObject Affected);
     void Start()
     {
         lineRen.enabled = true;
@@ -41,6 +44,12 @@ public class Laser : MonoBehaviour
         points.Clear();
         points.Add(start);
 
+        //OmniButton based variables
+        bool Stronglaser = false;  /* for--->>*/ float distanceLeft = StrongLaserCutRange;
+        bool explosionLaser = false;
+        int stupidReflects = 0;
+
+
         short DebugInt = 0;
         //makes sure it only reflect <100 timse
         for (int i = 0; i < maxReflections; i++)
@@ -59,18 +68,56 @@ public class Laser : MonoBehaviour
                     continue;
                 }
 
-
+                if (Stronglaser)
+                {
+                   RaycastHit2D raycast1 = Physics2D.Raycast(start, dir, distanceLeft);
+                   RaycastHit2D raycast2 = Physics2D.Raycast(raycast1.point + dir / 10, dir, distanceLeft - raycast1.distance);
+                   Collider2D collider = raycast1.collider;
+                   if (raycast2 == false && collider.GetType() != typeof(EdgeCollider2D)) break;
+                   else
+                   {
+                        start = raycast2.point + dir / 10;
+                        continue;
+                   }
+                }
                 if (LaserDetectorTag != "" && hit.collider.gameObject.tag == LaserDetectorTag && hit.collider.gameObject.GetComponent<LightSensor>())
                 {
                      hit.collider.gameObject.GetComponent<LightSensor>().SetTurnedOn();
                      DebugInt++;
                      break;
                 }
-                else
+                if (OmniButtonTag != "" && hit.collider.gameObject.tag == OmniButtonTag && hit.collider.gameObject.GetComponent<OmniButton>())
                 {
-                     DebugInt++;
-                     break;
+                     OmniButton omni = hit.collider.gameObject.GetComponent<OmniButton>();
+                     if (omni.Reflects)
+                     {
+                          dir = Vector2.Reflect(dir, hit.normal);
+                          start = hit.point + dir * 0.1f;
+                          DebugInt++;
+                     }
+                     if (omni.CutDanger)
+                     {
+                         Stronglaser = true;
+                     }
+                     if (omni.Explosiv)
+                     {
+                          explosionLaser = true;
+                     }
+                     if (omni.Reflectionableing)
+                     {
+                          stupidReflects++;
+                     }
+                     continue;
                 }
+
+                if (stupidReflects > 0)
+                {
+                     dir = Vector2.Reflect(dir, hit.normal);
+                     start = hit.point + dir * 0.1f;
+                     DebugInt++;
+                     continue;
+                }
+                break;
             }
 
             //if laser hits nothing, only go 100 units

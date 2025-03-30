@@ -1,16 +1,10 @@
 using UnityEngine;
-
+using UnityEngine.Events;
 public class Button : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    UnityEvent UE;
+    void OnCollisionEnter2D(Collision2D coll)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+         if (coll.gameObject.GetComponent<Rigidbody2D>()) UE.Invoke();
     }
 }

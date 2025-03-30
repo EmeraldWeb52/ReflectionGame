@@ -14,4 +14,12 @@ public class SpriteWork : ScriptableObject
          else
                return false;
     }
+    public bool Legality(int Index)
+    {
+         if (Index < 0) return false;
+         if (sprites.Count >= (Index + 1) && sprites.Count != 0)
+               return sprites[Index] != null;
+         else
+               return false;
+    }
 }
