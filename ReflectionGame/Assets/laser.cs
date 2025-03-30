@@ -23,7 +23,7 @@ public class Laser : MonoBehaviour
     {
         if (Input.GetKey(KeyCode.Space))
         {
-            DrawLaser(firePoint.position, firePoint.right);
+            DrawLaser();
             lineRen.enabled = true;
         }
         else
@@ -32,8 +32,10 @@ public class Laser : MonoBehaviour
         }
     }
 
-    void DrawLaser(Vector2 start, Vector2 dir)
+    public void DrawLaser()
     {
+         Vector2 start = firePoint.position;
+         Vector2 dir = firePoint.right;
         //list of points(start point and all reflections in order)
         List<Vector3> points = new List<Vector3>();
         points.Clear();
