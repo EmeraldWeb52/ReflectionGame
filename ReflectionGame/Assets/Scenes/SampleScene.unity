@@ -613,7 +613,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   groundCheck: {fileID: 395804177}
-  checkRadius: 1
+  checkRadius: 0.5
   whatisGround:
     serializedVersion: 2
     m_Bits: 8

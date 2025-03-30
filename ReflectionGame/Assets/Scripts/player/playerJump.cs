@@ -13,6 +13,7 @@ public class playerJump : MonoBehaviour
     private bool isJumping;
     private bool isGrounded = false;
     public float jumpQueueTime;
+    private bool doubleJumps;
 
     private playerInput playerInp;
 
@@ -25,27 +26,36 @@ public class playerJump : MonoBehaviour
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatisGround);
 
-        if(playerInp.doJump && isJumping)
+
+       if(playerInp.doJump )
         {
             StartCoroutine(jumpQueue(jumpQueueTime));
+      
         }
         
     }
     void FixedUpdate()
     {
-        
-        if (playerInp.doJump && !isJumping)
+        if (isGrounded || doubleJumps)
         {
-            playerInp.doJump = false;
-            isJumping = true;
-            jump(jumpForce);
+            if (playerInp.doJump)
+            {
+                playerInp.doJump = false;
+                isJumping = true;
+                jump(jumpForce);
+                doubleJumps = !doubleJumps;
+            }
         }
+        
+        if (isGrounded && playerInp.doJump)
+        {      
+            doubleJumps = false;
+        }
+
+        
     }
-    
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        isJumping = false;
-    }
+
+   
     public void jump(float force)
     {
         rb.AddForce(new Vector2(rb.linearVelocity.x, force));
