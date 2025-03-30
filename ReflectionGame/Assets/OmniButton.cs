@@ -53,6 +53,11 @@ public class OmniButton : MonoBehaviour
          StartCoroutine(Trivia());
     }
 
+    void OnDrawGizmosSelected()
+    {
+         if (States.Legality((int)State) && StateShow) StateShow.sprite = States.sprites[(int)State];
+    }
+
     void Update()
     {
          if (textmesh) textmesh.text = "Current State: " + (ON ? "ON" : "OFF");
