@@ -65,7 +65,7 @@ public class LightSensor : MonoBehaviour
     {
          foreach (LightSensor lightSens in Object.FindObjectsByType<LightSensor>(FindObjectsSortMode.None))
          {
-              if (lightSens.state) lightSens.StartCoroutine(lightSens.RefreshConsequences());
+              if (lightSens.GetState()) lightSens.StartCoroutine(lightSens.RefreshConsequences());
          }
     }
 }

@@ -14,6 +14,7 @@ public class Laser : MonoBehaviour
     {
         lineRen.enabled = true;
         lineRen.useWorldSpace = true;
+        //Makes sure there's only one rerefresh (atleast supposed to)
         StopCoroutine(ReRefresh());
         StartCoroutine(ReRefresh());
     }
@@ -76,7 +77,8 @@ public class Laser : MonoBehaviour
         lineRen.positionCount = points.Count;
         lineRen.SetPositions(points.ToArray());
     }
-
+    //Refreshes Lightsensor when thing happens
+    // Currently Getkey, PLEASE CHANGER
     public static IEnumerator ReRefresh()
     {
          for (;;)
@@ -112,11 +114,7 @@ public class Laser : MonoBehaviour
                          dir = Vector2.Reflect(dir, hit.normal);
                          start = hit.point + dir * 0.05f;
                      }
-
-                     else
-                     {
-
-                     }
+                     else break;
                  }
 
                  //if laser hits nothing, only go 100 units
