@@ -13,6 +13,8 @@ public class Laser : MonoBehaviour
     public Transform firePoint;
     public const int maxReflections = 20; // safeguard
     public const float StrongLaserCutRange = 0.75f;
+
+    public bool disabled;
     bool dontHideLineRend_flag;
     public float timing;
     delegate void CarriedFunctionality(Vector2 activity, GameObject Affected);
@@ -42,6 +44,9 @@ public class Laser : MonoBehaviour
     {
          StartCoroutine(DrawLaserForSeconds(5f));
     }
+    public void DisableLaserFor3Seconds() => StartCoroutine(DisableLaserForSeconds(3f));
+    public void DisableLaserFor5Seconds() => StartCoroutine(DisableLaserForSeconds(5f));
+    public void DisableLaserFor10Seconds() => StartCoroutine(DisableLaserForSeconds(10));
     IEnumerator DrawLaserForSeconds(float seconds)
     {
          timing = Time.time;
@@ -57,8 +62,16 @@ public class Laser : MonoBehaviour
          dontHideLineRend_flag = false;
     }
 
+    IEnumerator DisableLaserForSeconds(float seconds)
+    {
+         disabled = true;
+         yield return new WaitForSeconds(seconds);
+         disabled = false;
+         yield break;
+    }
     public void DrawLaser()
     {
+         if (disabled) return;
          Vector2 start = firePoint.position;
          Vector2 dir = firePoint.right;
         //list of points(start point and all reflections in order)
@@ -95,7 +108,7 @@ public class Laser : MonoBehaviour
                    RaycastHit2D raycast1 = Physics2D.Raycast(start, dir, distanceLeft);
                    RaycastHit2D raycast2 = Physics2D.Raycast(raycast1.point + dir / 10, dir, distanceLeft - raycast1.distance);
                    Collider2D collider = raycast1.collider;
-                   if (raycast2 == false && collider is EdgeCollider2D) break;
+                   if (raycast2 == false && collider !is EdgeCollider2D) break;
                    else
                    {
                         start = raycast2.point + dir / 10;
@@ -125,7 +138,7 @@ public class Laser : MonoBehaviour
                //      }
                      if (omni.Reflectionableing)
                      {
-                          stupidReflects++;
+                          stupidReflects += 2;
                      }
                      if (omni.Reflects)
                      {
@@ -141,6 +154,7 @@ public class Laser : MonoBehaviour
                 {
                      dir = Vector2.Reflect(dir, hit.normal);
                      start = hit.point + dir * 0.1f;
+                     stupidReflects--;
                //      DebugInt++;
                      continue;
                 }
