@@ -9,6 +9,7 @@ public class Laser : MonoBehaviour
     [SerializeField] bool doIndependent;
     public static string LaserDetectorTag;
     public static string OmniButtonTag;
+    public static string ExplosiveConversionTag;
     public LineRenderer lineRen;
     public Transform firePoint;
     public const int maxReflections = 20; // safeguard
@@ -17,7 +18,7 @@ public class Laser : MonoBehaviour
     public bool disabled;
     bool dontHideLineRend_flag;
     public float timing;
-    delegate void CarriedFunctionality(Vector2 activity, GameObject Affected);
+    delegate void CarriedFunctionality(GameObject With,Vector2 activity);
     void Start()
     {
         lineRen.enabled = true;
@@ -81,7 +82,8 @@ public class Laser : MonoBehaviour
 
         //OmniButton based variables
         bool Stronglaser = false;  /* for--->>*/ float distanceLeft = StrongLaserCutRange;
-     //   bool explosionLaser = false;
+        bool explosionLaser = false;
+        bool truedExplosionLaser = false;
         int stupidReflects = 0;
         bool soonToEnd;
 
@@ -92,6 +94,24 @@ public class Laser : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(start, dir);
             if (hit.collider != null)
             {
+                 if (truedExplosionLaser && explosionLaser)
+                 {
+                      Instantiate(LaserConvers.stExplosion, hit.point, Quaternion.Euler(0,0,0));
+                      foreach (Collider2D explodee in Physics2D.OverlapCircleAll(hit.point, 7))
+                      {
+                           if (explodee.gameObject.GetComponent<Breakable>())
+                           {
+                                Destroy(explodee.gameObject, 5);
+                                if (!explodee.gameObject.GetComponent<Rigidbody2D>()) explodee.gameObject.AddComponent<Rigidbody2D>().AddForce(((Vector2)hit.collider.transform.position - hit.point).normalized * 30);
+                                Destroy(explodee);
+                                continue;
+                           }
+                           if (explodee.tag == "Player")
+                           {
+                                //Gameovering script
+                           }
+                      }
+                 }
                 //adds reflection point to list
                 points.Add(hit.point);
                 //if object is reflectable, set the points to the new data to draw the next segment of the line
@@ -132,10 +152,10 @@ public class Laser : MonoBehaviour
                      {
                         Stronglaser = true;
                      }
-               //      if (omni.Explosiv)
-               //      {
-               //           explosionLaser = true;
-               //      }
+                     if (omni.Explosiv)
+                     {
+                          explosionLaser = true;
+                     }
                      if (omni.Reflectionableing)
                      {
                           stupidReflects += 2;
@@ -147,7 +167,13 @@ public class Laser : MonoBehaviour
                           continue;
                      }
                      else soonToEnd = true;
+                }
 
+                if (ExplosiveConversionTag != "" && hit.collider.gameObject.tag == ExplosiveConversionTag && hit.collider.gameObject.GetComponent<LaserConvers>() && explosionLaser)
+                {
+                      start = hit.collider.gameObject.GetComponent<LaserConvers>().CollisionHasHappened(this, hit.point, dir);
+                      truedExplosionLaser = true;
+                      continue;
                 }
 
                 if (stupidReflects > 0)

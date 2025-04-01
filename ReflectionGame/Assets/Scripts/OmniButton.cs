@@ -13,7 +13,6 @@ public enum Statesing
 public class OmniButton : MonoBehaviour
 {
      //STatics
-     public static GameObject stExplosion;
      [Header("Behaviours")]
      public bool Reflects;
      public bool CutDanger;
@@ -36,14 +35,13 @@ public class OmniButton : MonoBehaviour
      [SerializeField] SpriteRenderer StateShow;
      [SerializeField] TextMesh textmesh;
 
-     [Header("Kinda Necessary")]
-     [SerializeField] GameObject explosion;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
          Laser.OmniButtonTag = this.gameObject.tag;
          //Only thing that can cause explosion
-         if (explosion && stExplosion == null) stExplosion = explosion;
+
          for (int i = 0; 4 > i; i++)
          {
               if (Abil.Legality(i) && AbilitiesShow[i]) AbilitiesShow[i].sprite = Abil.sprites[i];
@@ -145,13 +143,6 @@ public class OmniButton : MonoBehaviour
           {
                AbilitiesShow[3].color /= 5;
           }
-    }
-
-
-
-    public void Explosion(Vector2 position, GameObject affected)
-    {
-         if (stExplosion) Instantiate(stExplosion, position, Quaternion.Euler(0,0,0));
     }
 
     public bool GetCheck(bool state)
