@@ -125,6 +125,12 @@ public class Laser : MonoBehaviour
                 }
                 if (Stronglaser)
                 {
+                     if (isOmni) if (omni.Reflects)
+                     {
+                          dir = Vector2.Reflect(dir, hit.normal);
+                          start = hit.point + dir * 0.1f;
+                          continue;
+                     }
                      if (hit.collider.gameObject.GetComponent<UltraLaserBreakable>())
                      {
                           Collider2D explodee = hit.collider;
