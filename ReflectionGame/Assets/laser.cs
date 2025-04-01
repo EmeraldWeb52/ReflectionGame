@@ -85,7 +85,6 @@ public class Laser : MonoBehaviour
         bool explosionLaser = false;
         bool truedExplosionLaser = false;
         int stupidReflects = 0;
-        bool soonToEnd;
 
      //   short DebugInt = 0;
         //makes sure it only reflect < maxReflections timse
@@ -94,6 +93,8 @@ public class Laser : MonoBehaviour
             RaycastHit2D hit = Physics2D.Raycast(start, dir);
             if (hit.collider != null)
             {
+                 bool isOmni = OmniButtonTag != "" && hit.collider.gameObject.tag == OmniButtonTag && hit.collider.gameObject.GetComponent<OmniButton>();
+                 OmniButton omni = hit.collider.gameObject.GetComponent<OmniButton>();
                  if (truedExplosionLaser && explosionLaser)
                  {
                       Instantiate(LaserConvers.stExplosion, hit.point, Quaternion.Euler(0,0,0));
@@ -122,9 +123,15 @@ public class Laser : MonoBehaviour
           //          DebugInt++;
                     continue;
                 }
-
                 if (Stronglaser)
                 {
+                     if (hit.collider.gameObject.GetComponent<UltraLaserBreakable>())
+                     {
+                          Collider2D explodee = hit.collider;
+                          Destroy(explodee.gameObject, 5);
+                          if (!explodee.gameObject.GetComponent<Rigidbody2D>()) explodee.gameObject.AddComponent<Rigidbody2D>().AddForce(((Vector2)hit.collider.transform.position - hit.point).normalized * 5);
+                          Destroy(explodee);
+                     }
                      Debug.DrawRay(hit.point + dir.normalized / 100, dir);
                      Collider2D coll = hit.collider;
                    RaycastHit2D raycast1 = Physics2D.Raycast(hit.point + dir.normalized * StrongLaserCutRange, -dir, StrongLaserCutRange);
@@ -148,10 +155,9 @@ public class Laser : MonoBehaviour
                      break;
                 }
                 //Omnibutton detection
-                if (OmniButtonTag != "" && hit.collider.gameObject.tag == OmniButtonTag && hit.collider.gameObject.GetComponent<OmniButton>())
+                if (isOmni)
                 {
           //           DebugInt++;
-                     OmniButton omni = hit.collider.gameObject.GetComponent<OmniButton>();
                      omni.SetTurnedOn();
                      if (omni.CutDanger)
                      {
@@ -171,7 +177,6 @@ public class Laser : MonoBehaviour
                           start = hit.point + dir * 0.1f;
                           continue;
                      }
-                     else soonToEnd = true;
                 }
 
                 if (ExplosiveConversionTag != "" && hit.collider.gameObject.tag == ExplosiveConversionTag && hit.collider.gameObject.GetComponent<LaserConvers>() && explosionLaser)
