@@ -69,6 +69,7 @@ public class OmniButton : MonoBehaviour
               if (GetCheck(true) && ON)
               {
                    UniEng.Invoke();
+                   ButtonManagement.buttonPressed(this.transform.position);
                    if (StateShow && UniEng.GetPersistentEventCount() > 0) StateShow.color /= 5;
                    yield return new WaitForSeconds(3f);
                    if (StateShow && UniEng.GetPersistentEventCount() > 0) StateShow.color = new Color(255,255,255,1);
@@ -110,7 +111,7 @@ public class OmniButton : MonoBehaviour
          if (AbilitiesShow[0])
               if (Reflects)
               {
-                   AbilitiesShow[0].color = new Color(255,255,255,1);
+                   AbilitiesShow[0].color = new Color(255,255,255,100);
               }
               else
               {
@@ -119,7 +120,7 @@ public class OmniButton : MonoBehaviour
          if (AbilitiesShow[1])
              if (CutDanger)
              {
-                  AbilitiesShow[1].color = new Color(255,255,255,1);
+                  AbilitiesShow[1].color = new Color(255,255,255,100);
              }
              else
              {
@@ -128,7 +129,7 @@ public class OmniButton : MonoBehaviour
         if (AbilitiesShow[2])
             if (Explosiv)
             {
-                 AbilitiesShow[2].color = new Color(255,255,255,1);
+                 AbilitiesShow[2].color = new Color(255,255,255,100);
             }
             else
             {
@@ -137,7 +138,7 @@ public class OmniButton : MonoBehaviour
        if (AbilitiesShow[3])
           if (Reflectionableing)
           {
-               AbilitiesShow[3].color = new Color(255,255,255,1);
+               AbilitiesShow[3].color = new Color(255,255,255,100);
           }
           else
           {

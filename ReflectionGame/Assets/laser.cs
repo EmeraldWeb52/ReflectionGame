@@ -81,7 +81,7 @@ public class Laser : MonoBehaviour
         points.Add(start);
 
         //OmniButton based variables
-        bool Stronglaser = false;  /* for--->>*/ float distanceLeft = StrongLaserCutRange;
+        bool Stronglaser = false;  /* for--->>*/
         bool explosionLaser = false;
         bool truedExplosionLaser = false;
         int stupidReflects = 0;
@@ -125,15 +125,18 @@ public class Laser : MonoBehaviour
 
                 if (Stronglaser)
                 {
-                   RaycastHit2D raycast1 = Physics2D.Raycast(start, dir, distanceLeft);
-                   RaycastHit2D raycast2 = Physics2D.Raycast(raycast1.point + dir / 10, dir, distanceLeft - raycast1.distance);
-                   Collider2D collider = raycast1.collider;
-                   if (raycast2 == false && collider !is EdgeCollider2D) break;
+                     Debug.DrawRay(hit.point + dir.normalized * StrongLaserCutRange, -dir);
+                   RaycastHit2D raycast1 = Physics2D.Raycast(hit.point + dir.normalized * StrongLaserCutRange, -dir, StrongLaserCutRange);
+                   if (raycast1.collider)
+                   {
+                        points.Add(hit.point + dir.normalized * StrongLaserCutRange);
+                        start = hit.point + dir.normalized * StrongLaserCutRange;
+                   }
                    else
                    {
-                        start = raycast2.point + dir / 10;
-                        continue;
+                        break;
                    }
+
                 }
                 //Laser detector
                 if (LaserDetectorTag != "" && hit.collider.gameObject.tag == LaserDetectorTag && hit.collider.gameObject.GetComponent<LightSensor>())
