@@ -49,6 +49,7 @@ public class OmniButton : MonoBehaviour
               if (Abil.Legality(i) && AbilitiesShow[i]) AbilitiesShow[i].sprite = Abil.sprites[i];
          }
          if (States.Legality((int)State) && StateShow) StateShow.sprite = States.sprites[(int)State];
+         OmniColors();
          StartCoroutine(Checking());
          StartCoroutine(Trivia());
     }
@@ -101,6 +102,51 @@ public class OmniButton : MonoBehaviour
     {
          ON = false;
     }
+
+    void OmniColors()
+    {
+         if (AbilitiesShow.Length < 4)
+         {
+              Debug.Log("Bad size");
+         }
+         if (AbilitiesShow[0])
+              if (Reflects)
+              {
+                   AbilitiesShow[0].color = new Color(255,255,255,1);
+              }
+              else
+              {
+                   AbilitiesShow[0].color /= 5;
+              }
+         if (AbilitiesShow[1])
+             if (CutDanger)
+             {
+                  AbilitiesShow[1].color = new Color(255,255,255,1);
+             }
+             else
+             {
+                  AbilitiesShow[1].color /= 5;
+             }
+        if (AbilitiesShow[2])
+            if (Explosiv)
+            {
+                 AbilitiesShow[2].color = new Color(255,255,255,1);
+            }
+            else
+            {
+                 AbilitiesShow[2].color /= 5;
+            }
+       if (AbilitiesShow[3])
+          if (Reflectionableing)
+          {
+               AbilitiesShow[3].color = new Color(255,255,255,1);
+          }
+          else
+          {
+               AbilitiesShow[3].color /= 5;
+          }
+    }
+
 
 
     public void Explosion(Vector2 position, GameObject affected)
@@ -164,6 +210,7 @@ public class OmniButton : MonoBehaviour
          }
          return false;
     }
+    //To make sure it's not foke
     public IEnumerator RefreshConsequences()
     {
          if (proven)
