@@ -125,12 +125,14 @@ public class Laser : MonoBehaviour
 
                 if (Stronglaser)
                 {
-                     Debug.DrawRay(hit.point + dir.normalized * StrongLaserCutRange, -dir);
+                     Debug.DrawRay(hit.point + dir.normalized / 100, dir);
+                     Collider2D coll = hit.collider;
                    RaycastHit2D raycast1 = Physics2D.Raycast(hit.point + dir.normalized * StrongLaserCutRange, -dir, StrongLaserCutRange);
-                   if (raycast1.collider)
+                   if (Vector2.Distance(hit.point, raycast1.point) < StrongLaserCutRange)
                    {
-                        points.Add(hit.point + dir.normalized * StrongLaserCutRange);
-                        start = hit.point + dir.normalized * StrongLaserCutRange;
+                        points.Add(raycast1.point);
+                        start = raycast1.point + dir.normalized / 10;
+                        continue;
                    }
                    else
                    {
