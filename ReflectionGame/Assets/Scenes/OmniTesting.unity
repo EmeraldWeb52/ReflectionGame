@@ -2102,8 +2102,12 @@ PrefabInstance:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 4595576707506397096, guid: 221587e615a573942ba04f3c8a3d8145, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4595576707506397096, guid: 221587e615a573942ba04f3c8a3d8145, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 4.394673
+      value: 4.4
       objectReference: {fileID: 0}
     - target: {fileID: 4595576707506397096, guid: 221587e615a573942ba04f3c8a3d8145, type: 3}
       propertyPath: m_LocalPosition.y
