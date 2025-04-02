@@ -464,7 +464,6 @@ MonoBehaviour:
   - {fileID: 9083013365524512622}
   StateShow: {fileID: 5760527646210224527}
   textmesh: {fileID: 7264878423892686299}
-  explosion: {fileID: 0}
 --- !u!61 &5826370483523403023
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -762,7 +761,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -6758208210611770687, guid: 7d1c1fdaf122ca445bda8142265a27a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7d1c1fdaf122ca445bda8142265a27a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

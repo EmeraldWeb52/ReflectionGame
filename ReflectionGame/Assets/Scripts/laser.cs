@@ -66,8 +66,12 @@ public class Laser : MonoBehaviour
     IEnumerator DisableLaserForSeconds(float seconds)
     {
          disabled = true;
+         if (lineRen) lineRen.startColor = new Color(lineRen.startColor.r, lineRen.startColor.g, lineRen.startColor.b, 0.2f);
+         if (lineRen) lineRen.endColor = new Color(lineRen.endColor.r, lineRen.endColor.g, lineRen.endColor.b, 0.2f);
          yield return new WaitForSeconds(seconds);
          disabled = false;
+         if (lineRen) lineRen.startColor = new Color(lineRen.startColor.r, lineRen.startColor.g, lineRen.startColor.b, 1f);
+         if (lineRen) lineRen.endColor = new Color(lineRen.endColor.r, lineRen.endColor.g, lineRen.endColor.b, 1f);
          yield break;
     }
     public void DrawLaser()
@@ -97,7 +101,7 @@ public class Laser : MonoBehaviour
                  OmniButton omni = hit.collider.gameObject.GetComponent<OmniButton>();
                  if (truedExplosionLaser && explosionLaser)
                  {
-                      Instantiate(LaserConvers.stExplosion, hit.point, Quaternion.Euler(0,0,0));
+                      Instantiate(Explosionir.stExplosion, hit.point, Quaternion.Euler(0,0,0));
                       foreach (Collider2D explodee in Physics2D.OverlapCircleAll(hit.point, 7))
                       {
                            if (explodee.gameObject.GetComponent<Breakable>())

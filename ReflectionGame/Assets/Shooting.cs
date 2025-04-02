@@ -12,16 +12,16 @@ public class Shooting : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-
+         StartCoroutine(TriggerReset());
     }
 
     IEnumerator TriggerReset()
     {
          while (true)
          {
-              if (anim && !isReset) anim.ResetTrigger("Shot");
-              if (boomAnim && !isReset) anim.ResetTrigger("Boom");
-              yield return new WaitForSeconds(0.2f);
+              if (boomAnim && !isReset)
+              boomAnim.ResetTrigger("Boom");
+              yield return new WaitForSeconds(0.07f);
          }
     }
 
@@ -30,20 +30,23 @@ public class Shooting : MonoBehaviour
     {
 
     }
-
     public void Shoot()
     {
+          if (anim) anim.SetBool("Shot", true);
+    }
+    void Shootingness()
+    {
          isReset = false;
-         if (anim) anim.SetTrigger("Shot");
-         if (boomAnim) anim.SetTrigger("Boom");
+         if (boomAnim) boomAnim.SetTrigger("Boom");
          shooter.Play();
-         RaycastHit2D[] rayhits = Physics2D.CircleCastAll(shootingPoint.transform.position, 0.4f, shootingPoint.right, 300);
+         RaycastHit2D[] rayhits = Physics2D.CircleCastAll(shootingPoint.transform.position, 0.4f, shootingPoint.right, 40);
          int i = 20;
          foreach (RaycastHit2D raycastHit in rayhits)
          {
               if (i > 0)
               {
-                   GameObject explosion = Instantiate(LaserConvers.stExplosion, raycastHit.centroid, Quaternion.Euler(0,0,0));
+                   GameObject explosion = Instantiate(Explosionir.stExplosion, raycastHit.centroid, Quaternion.Euler(0,0,0));
+                   explosion.transform.localScale /= 2;
                    foreach (Transform child in explosion.transform)
                    {
                         if (child.gameObject.GetComponent<SpriteRenderer>())
@@ -54,7 +57,7 @@ public class Shooting : MonoBehaviour
                    Collider2D Victim = raycastHit.collider;
                    if (Victim.gameObject.GetComponent<Breakable>())
                    {
-                        Instantiate(LaserConvers.stExplosion, raycastHit.collider.transform.position, Quaternion.Euler(0,0,0)).transform.localScale /= 5;
+                        Instantiate(Explosionir.stExplosion, raycastHit.collider.transform.position, Quaternion.Euler(0,0,0)).transform.localScale /= 1.1f;
                         Destroy(Victim.gameObject, 5);
                         if (!Victim.gameObject.GetComponent<Rigidbody2D>()) Victim.gameObject.AddComponent<Rigidbody2D>().AddForce(((Vector2)Victim.transform.position - raycastHit.point).normalized * 30);
                         Destroy(Victim);
@@ -63,5 +66,6 @@ public class Shooting : MonoBehaviour
                        i--;
               }
          }
+          anim.SetBool("Shot", false);
     }
 }

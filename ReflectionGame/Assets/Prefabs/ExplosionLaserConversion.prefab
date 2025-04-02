@@ -147,8 +147,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d6d88748b9af6a41a87476d93537b9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserConversionSound: {fileID: 8300000, guid: 9a3c3e778b88ffe47a44c74c25fe08a0, type: 3}
   LaserTrail: {fileID: 4310492425354228919, guid: 2b9708b525e08d9438b0bc2125817b0a, type: 3}
-  explosion: {fileID: 698895647477028780, guid: 00a404df5365a4c43b6652b5603d3d04, type: 3}
 --- !u!1 &2788612633523049550
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,12 +226,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5619658302830985125, guid: 8aef155543e831a49bd7cba59c38a101, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8aef155543e831a49bd7cba59c38a101, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 1.75}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -275,8 +275,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.75}
-    newSize: {x: 2, y: 1.75}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -394,12 +394,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5619658302830985125, guid: 8aef155543e831a49bd7cba59c38a101, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 8aef155543e831a49bd7cba59c38a101, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2, y: 1.75}
+  m_Size: {x: 2, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -443,8 +443,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 1.75}
-    newSize: {x: 2, y: 1.75}
+    oldSize: {x: 2, y: 2}
+    newSize: {x: 2, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
