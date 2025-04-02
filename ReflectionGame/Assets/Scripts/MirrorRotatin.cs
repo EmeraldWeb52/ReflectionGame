@@ -4,16 +4,13 @@ using UnityEngine;
 public class MirrorRotation : MonoBehaviour
 {
     [SerializeField] float speed = 90;
-    private Coroutine rotationCoroutine;
     private bool isRotating = false;
 
     public void RotateCertAmount(float amount)
     {
-        if (rotationCoroutine != null)
-            StopCoroutine(rotationCoroutine);
-        if (isRotating)
+        if (!isRotating)
         {
-            rotationCoroutine = StartCoroutine(RotateOverTime(amount, speed));
+            StartCoroutine(RotateOverTime(amount, speed));
         }
     }
 
