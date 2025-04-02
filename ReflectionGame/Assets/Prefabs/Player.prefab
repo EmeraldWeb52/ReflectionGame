@@ -363,7 +363,7 @@ Transform:
   m_GameObject: {fileID: 5919577971089712660}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.61, y: -1.14, z: 0}
+  m_LocalPosition: {x: -4.5023293, y: -2.5386782, z: 0}
   m_LocalScale: {x: 1, y: 1.0318, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -481,6 +481,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: b5b11730e2e577c46821ec33d6ef8263, type: 3}
   - {fileID: 8300000, guid: 64fa435d4e0eb31448d4bab58998161f, type: 3}
   mainPlayerSounds: {fileID: 0}
+  walkSoundDelay: 0.05
 --- !u!114 &1637274557316704716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -502,6 +503,11 @@ MonoBehaviour:
   extraJumpsValue: 0
   isGrounded: 0
   jumpQueueTime: 0.15
+  jumpSounds:
+  - {fileID: 8300000, guid: 29ba56fb85777ba4ebbe806f737cc74d, type: 3}
+  - {fileID: 8300000, guid: 70efb66f1f624004c9ac5b11cc5e80bd, type: 3}
+  - {fileID: 8300000, guid: 7470da9b50d7e2b4b91bee79c0a17c70, type: 3}
+  mainJumpSounds: {fileID: 0}
 --- !u!114 &2755890961150960881
 MonoBehaviour:
   m_ObjectHideFlags: 0
