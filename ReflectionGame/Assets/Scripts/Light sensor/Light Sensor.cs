@@ -64,17 +64,16 @@ public class LightSensor : MonoBehaviour
     public IEnumerator RefreshConsequences()
     {
          if (proven)
-          {
-               proven = false;
-               yield break;
-          }
-         yield return new WaitForSeconds(0.5f);
-         if (proven)
          {
                proven = false;
-               yield break;
          }
-         SetTurnedOff();
+        yield return new WaitForSeconds(0.1f);
+        if (proven)
+        {
+            proven = false;
+            yield break;
+        }
+        SetTurnedOff();
     }
 
 }
