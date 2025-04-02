@@ -184,6 +184,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1637274557316704716, guid: 3610a40c2ef3f3840a16c0b5150ee60a, type: 3}
+      propertyPath: jumpSounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1637274557316704716, guid: 3610a40c2ef3f3840a16c0b5150ee60a, type: 3}
+      propertyPath: 'jumpSounds.Array.data[0]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 29ba56fb85777ba4ebbe806f737cc74d, type: 3}
+    - target: {fileID: 1637274557316704716, guid: 3610a40c2ef3f3840a16c0b5150ee60a, type: 3}
+      propertyPath: 'jumpSounds.Array.data[1]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 70efb66f1f624004c9ac5b11cc5e80bd, type: 3}
+    - target: {fileID: 1637274557316704716, guid: 3610a40c2ef3f3840a16c0b5150ee60a, type: 3}
+      propertyPath: 'jumpSounds.Array.data[2]'
+      value: 
+      objectReference: {fileID: 8300000, guid: 7470da9b50d7e2b4b91bee79c0a17c70, type: 3}
     - target: {fileID: 3842812656141833215, guid: 3610a40c2ef3f3840a16c0b5150ee60a, type: 3}
       propertyPath: m_LocalPosition.x
       value: -4.5023293
