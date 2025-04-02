@@ -395,6 +395,34 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 493847258401167132, guid: 55c447120b5e1e441ac9e68c80c30dec, type: 3}
+      propertyPath: UE.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 493847258401167132, guid: 55c447120b5e1e441ac9e68c80c30dec, type: 3}
+      propertyPath: UE.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 493847258401167132, guid: 55c447120b5e1e441ac9e68c80c30dec, type: 3}
+      propertyPath: UE.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 493847258401167132, guid: 55c447120b5e1e441ac9e68c80c30dec, type: 3}
+      propertyPath: UE.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 493847258401167132, guid: 55c447120b5e1e441ac9e68c80c30dec, type: 3}
+      propertyPath: UE.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Shoot
+      objectReference: {fileID: 0}
+    - target: {fileID: 493847258401167132, guid: 55c447120b5e1e441ac9e68c80c30dec, type: 3}
+      propertyPath: UE.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: Shooting, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 493847258401167132, guid: 55c447120b5e1e441ac9e68c80c30dec, type: 3}
+      propertyPath: UE.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 3979219959479161184, guid: 55c447120b5e1e441ac9e68c80c30dec, type: 3}
       propertyPath: m_LocalPosition.x
       value: 8.5
