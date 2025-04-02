@@ -5,17 +5,21 @@ public class MirrorRotation : MonoBehaviour
 {
     [SerializeField] float speed = 90;
     private Coroutine rotationCoroutine;
+    private bool isRotating = false;
 
     public void RotateCertAmount(float amount)
     {
         if (rotationCoroutine != null)
             StopCoroutine(rotationCoroutine);
-
-        rotationCoroutine = StartCoroutine(RotateOverTime(amount, speed));
+        if (isRotating)
+        {
+            rotationCoroutine = StartCoroutine(RotateOverTime(amount, speed));
+        }
     }
 
     IEnumerator RotateOverTime(float amount, float speed)
     {
+        isRotating = true;
         float rotated = 0;
         float direction = Mathf.Sign(amount);
         while (Mathf.Abs(rotated) < Mathf.Abs(amount))
@@ -28,6 +32,7 @@ public class MirrorRotation : MonoBehaviour
             rotated += rotationStep;
             yield return null;
         }
+        isRotating = false;
 
         
         transform.Rotate(0, 0, amount - rotated);
