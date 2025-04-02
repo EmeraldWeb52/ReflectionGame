@@ -238,7 +238,7 @@ Camera:
   far clip plane: 5000
   field of view: 40
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 5.6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -263,7 +263,7 @@ Transform:
   m_GameObject: {fileID: 361418483}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5023293, y: -2.5386782, z: -6}
+  m_LocalPosition: {x: -1.43, y: 0.2670694, z: -27.03243}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3153,6 +3153,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4051446808322498369, guid: 8494594665e76d847ba7c1d858334504, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5748752832487933340, guid: 5403529364d90584081efd5f7274a760, type: 3}
     - target: {fileID: 6689065196166600930, guid: 8494594665e76d847ba7c1d858334504, type: 3}
       propertyPath: m_Name
       value: Button
