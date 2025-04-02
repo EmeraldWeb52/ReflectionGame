@@ -104,7 +104,7 @@ public class Laser : MonoBehaviour
                  if (truedExplosionLaser && explosionLaser)
                  {
                       Instantiate(Explosionir.stExplosion, hit.point, Quaternion.Euler(0,0,0));
-                      foreach (Collider2D explodee in Physics2D.OverlapCircleAll(hit.point, 7))
+                      foreach (Collider2D explodee in Physics2D.OverlapCircleAll(hit.point, 5.5f))
                       {
                            if (explodee.gameObject.GetComponent<Breakable>())
                            {
