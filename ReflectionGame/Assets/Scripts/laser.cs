@@ -66,10 +66,12 @@ public class Laser : MonoBehaviour
     IEnumerator DisableLaserForSeconds(float seconds)
     {
          disabled = true;
+         dontHideLineRend_flag = true;
          if (lineRen) lineRen.startColor = new Color(lineRen.startColor.r, lineRen.startColor.g, lineRen.startColor.b, 0.2f);
          if (lineRen) lineRen.endColor = new Color(lineRen.endColor.r, lineRen.endColor.g, lineRen.endColor.b, 0.2f);
          yield return new WaitForSeconds(seconds);
          disabled = false;
+         dontHideLineRend_flag = false;
          if (lineRen) lineRen.startColor = new Color(lineRen.startColor.r, lineRen.startColor.g, lineRen.startColor.b, 1f);
          if (lineRen) lineRen.endColor = new Color(lineRen.endColor.r, lineRen.endColor.g, lineRen.endColor.b, 1f);
          yield break;
@@ -102,7 +104,7 @@ public class Laser : MonoBehaviour
                  if (truedExplosionLaser && explosionLaser)
                  {
                       Instantiate(Explosionir.stExplosion, hit.point, Quaternion.Euler(0,0,0));
-                      foreach (Collider2D explodee in Physics2D.OverlapCircleAll(hit.point, 7))
+                      foreach (Collider2D explodee in Physics2D.OverlapCircleAll(hit.point, 5.5f))
                       {
                            if (explodee.gameObject.GetComponent<Breakable>())
                            {
@@ -113,7 +115,7 @@ public class Laser : MonoBehaviour
                            }
                            if (explodee.tag == "Player")
                            {
-                                //Gameovering script
+                                if (explodee.gameObject.GetComponent<PlayerHealth>()) explodee.gameObject.GetComponent<PlayerHealth>().TakeDamage(40);
                            }
                       }
                  }
