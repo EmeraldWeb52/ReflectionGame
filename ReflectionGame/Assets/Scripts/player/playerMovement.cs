@@ -31,7 +31,7 @@ public class playerMovement : MonoBehaviour
          while (true)
          {
               yield return new WaitUntil(() => (playerInp.horiMove != 0 && this.gameObject.GetComponent<playerJump>().isGrounded));
-              yield return new WaitForSeconds(0.2f);
+              yield return new WaitForSeconds(0.05f);
               if (playerInp.horiMove != 0)
               {
                    yield return StartCoroutine(Playing());
@@ -83,5 +83,6 @@ public class playerMovement : MonoBehaviour
          audioski.pitch = pitch;
          audioski.clip = clip;
          audioski.Play();
+         Destroy(tragfge, (clip.length / pitch) * 1.1f);
     }
 }
