@@ -11,7 +11,7 @@ public class playerJump : MonoBehaviour
     public float jumpForce;
     public int extraJumpsValue;
     private bool isJumping;
-    private bool isGrounded = false;
+    public bool isGrounded = false;
     public float jumpQueueTime;
 
     private playerInput playerInp;
@@ -29,11 +29,11 @@ public class playerJump : MonoBehaviour
         {
             StartCoroutine(jumpQueue(jumpQueueTime));
         }
-        
+
     }
     void FixedUpdate()
     {
-        
+
         if (playerInp.doJump && !isJumping)
         {
             playerInp.doJump = false;
@@ -41,7 +41,7 @@ public class playerJump : MonoBehaviour
             jump(jumpForce);
         }
     }
-    
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         isJumping = false;

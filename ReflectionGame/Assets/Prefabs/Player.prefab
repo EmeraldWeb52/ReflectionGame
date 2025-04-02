@@ -474,6 +474,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 5
+  moveSounds:
+  - {fileID: 8300000, guid: ba812f71c565e80459c53d05353e93f8, type: 3}
+  - {fileID: 8300000, guid: c9d32d7f21ea17d44a8c961bf22136f4, type: 3}
+  - {fileID: 8300000, guid: 485d058d25b0dcf4d8093514bd5dfe63, type: 3}
+  - {fileID: 8300000, guid: b5b11730e2e577c46821ec33d6ef8263, type: 3}
+  - {fileID: 8300000, guid: 64fa435d4e0eb31448d4bab58998161f, type: 3}
+  mainPlayerSounds: {fileID: 0}
 --- !u!114 &1637274557316704716
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -493,6 +500,7 @@ MonoBehaviour:
     m_Bits: 8
   jumpForce: 600
   extraJumpsValue: 0
+  isGrounded: 0
   jumpQueueTime: 0.15
 --- !u!114 &2755890961150960881
 MonoBehaviour:
