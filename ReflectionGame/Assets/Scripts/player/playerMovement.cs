@@ -11,6 +11,7 @@ public class playerMovement : MonoBehaviour
     float averaged;
     [SerializeField] AudioClip[] moveSounds;
     [SerializeField] AudioSource mainPlayerSounds;
+    [SerializeField] float walkSoundDelay;
     void Start()
     {
         playerInp = GetComponent<playerInput>();
@@ -31,7 +32,7 @@ public class playerMovement : MonoBehaviour
          while (true)
          {
               yield return new WaitUntil(() => (playerInp.horiMove != 0 && this.gameObject.GetComponent<playerJump>().isGrounded));
-              yield return new WaitForSeconds(0.2f);
+              yield return new WaitForSeconds(walkSoundDelay);
               if (playerInp.horiMove != 0)
               {
                    yield return StartCoroutine(Playing());
