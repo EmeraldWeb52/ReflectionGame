@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class MirrorRotatin : MonoBehaviour
 {
-    public void RotateCertAmount(float amount, float speed)
+    [SerializeField] float speed = 90;
+    public void RotateCertAmount(float amount)
     {
         StartCoroutine(RotateOverTime(amount, speed));
     }
