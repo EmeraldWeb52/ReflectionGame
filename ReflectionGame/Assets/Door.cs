@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class Door : MonoBehaviour
 {
      [SerializeField] private Vector2 Position;
-
+    public bool isTeleporter;
      void Start()
      {
 
@@ -13,7 +13,7 @@ public class Door : MonoBehaviour
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D collision)
     {
-         if (collision.transform.gameObject.tag == "Player")
+         if (collision.transform.gameObject.tag == "Player" && isTeleporter)
          {
              collision.transform.position = Position;
          }
@@ -21,11 +21,11 @@ public class Door : MonoBehaviour
 
     public void Open()
     {
-         if (this.GetComponent<Collider2D>()) this.GetComponent<Collider2D>().enabled = true;
+         gameObject.SetActive(false);
     }
 
     public void Close()
     {
-         if (this.GetComponent<Collider2D>()) this.GetComponent<Collider2D>().enabled = false;
+        gameObject.SetActive(true);
     }
 }
