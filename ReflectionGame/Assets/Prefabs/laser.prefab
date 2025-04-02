@@ -216,8 +216,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   reflectables:
   - Mirror
+  doIndependent: 0
   lineRen: {fileID: 7971205297194050839}
   firePoint: {fileID: 7745191471285150661}
+  disabled: 0
+  timing: 0
 --- !u!1 &1448850668874731485
 GameObject:
   m_ObjectHideFlags: 0

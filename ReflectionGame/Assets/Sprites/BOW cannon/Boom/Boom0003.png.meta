@@ -1,10 +1,13 @@
 fileFormatVersion: 2
-guid: 7484354bf9e4f3743a72a6d16800eeaf
+guid: e5b4ce21ac0f74946b05e649b684afdf
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6491901739557161700
-    second: Boomability warn_0
+      213: -7521874578460684300
+    second: Boom0003_0
+  - first:
+      213: 6401778756762582381
+    second: Boom0003_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 8
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,13 +103,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Boomability warn_0
+      name: Boom0003_0
       rect:
         serializedVersion: 2
-        x: 9
+        x: 2
         y: 0
-        width: 13
-        height: 32
+        width: 24
+        height: 62
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +118,30 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c1574f073c128e5a0800000000000000
-      internalID: -6491901739557161700
+      spriteID: 4ff4fc96ceeec9790800000000000000
+      internalID: -7521874578460684300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boom0003_1
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 7
+        width: 20
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6db9777cdfa7d850800000000000000
+      internalID: 6401778756762582381
       vertices: []
       indices: 
       edges: []
@@ -125,7 +150,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +160,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Boomability warn_0: -6491901739557161700
+      Boom0003_0: -7521874578460684300
+      Boom0003_1: 6401778756762582381
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
