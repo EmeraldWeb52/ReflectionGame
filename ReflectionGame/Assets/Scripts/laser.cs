@@ -31,7 +31,7 @@ public class Laser : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetKey(KeyCode.Space) || doIndependent)
+        if (/*Input.GetKey(KeyCode.Space) || */doIndependent)
         {
             DrawLaser();
             lineRen.enabled = true;
@@ -108,9 +108,7 @@ public class Laser : MonoBehaviour
                       {
                            if (explodee.gameObject.GetComponent<Breakable>())
                            {
-                                Destroy(explodee.gameObject, 5);
-                                if (!explodee.gameObject.GetComponent<Rigidbody2D>()) explodee.gameObject.AddComponent<Rigidbody2D>().AddForce(((Vector2)hit.collider.transform.position - hit.point).normalized * 30);
-                                Destroy(explodee);
+                                explodee.gameObject.AddComponent<Breakable>().Break(((Vector2)hit.collider.transform.position - hit.point).normalized * 30);
                                 continue;
                            }
                            if (explodee.tag == "Player")
@@ -243,7 +241,7 @@ public class Laser : MonoBehaviour
             points.Clear();
             points.Add(start);
 
-
+            bool explosive = false;
             //makes sure it only reflect <100 timse
             for (int i = 0; i < maxReflections; i++)
             {
@@ -257,6 +255,19 @@ public class Laser : MonoBehaviour
                      {
                          dir = Vector2.Reflect(dir, hit.normal);
                          start = hit.point + dir * 0.05f;
+                         continue;
+                     }
+                     else if (hit.collider.gameObject.GetComponent<OmniButton>())
+                     {
+                          if (hit.collider.gameObject.GetComponent<OmniButton>().Explosiv) explosive = true;
+                          dir = Vector2.Reflect(dir, hit.normal);
+                          start = hit.point + dir * 0.05f;
+                     }
+                     else if (hit.collider.gameObject.GetComponent<LaserConvers>())
+                     {
+                          if (explosive) lineRen.endColor = new Color(255, 255, 0, 1f);
+                          points.Add(hit.point + dir * 25);
+                          break;
                      }
                      else break;
                  }

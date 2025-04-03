@@ -101,5 +101,6 @@ public class playerJump : MonoBehaviour
         audioski.pitch = pitch;
         audioski.clip = clip;
         audioski.Play();
+        Destroy(tragfge, (clip.length / pitch) * 1.1f);
     }
 }

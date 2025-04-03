@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 2238480066432821076}
   - component: {fileID: 4443952563282623724}
   m_Layer: 0
-  m_Name: BOWCannon0000_0
+  m_Name: Sprite of BowCannon0000_0
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,6 +100,7 @@ GameObject:
   - component: {fileID: 2008463462633480702}
   - component: {fileID: 8775950550662002587}
   - component: {fileID: 1049096462970500088}
+  - component: {fileID: 8480434261098914365}
   m_Layer: 0
   m_Name: BowCannon
   m_TagString: Untagged
@@ -164,6 +165,53 @@ MonoBehaviour:
   ps: {fileID: 7644889037493505994}
   range: 40
   shootSize: 0.4
+  maxhitCons: 20
+--- !u!61 &8480434261098914365
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4746589551954375462}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_CompositeOperation: 0
+  m_CompositeOrder: 0
+  m_Offset: {x: -0.68672645, y: -0.17828473}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0, y: 0}
+    oldSize: {x: 0, y: 0}
+    newSize: {x: 0, y: 0}
+    adaptiveTilingThreshold: 0
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Size: {x: 2.3734524, y: 0.64343053}
+  m_EdgeRadius: 0
 --- !u!1 &5713030510499678457
 GameObject:
   m_ObjectHideFlags: 0
