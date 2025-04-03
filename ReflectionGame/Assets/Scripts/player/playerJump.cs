@@ -37,7 +37,6 @@ public class playerJump : MonoBehaviour
     private void Update()
     {
         isGrounded = Physics2D.OverlapCircle(groundCheck.position, checkRadius, whatisGround);
-
         if(playerInp.doJump && isJumping)
         {
             StartCoroutine(jumpQueue(jumpQueueTime));
@@ -49,9 +48,12 @@ public class playerJump : MonoBehaviour
 
         if (playerInp.doJump && !isJumping)
         {
-            playerInp.doJump = false;
-            isJumping = true;
             jump(jumpForce);
+        }
+        else if (isGrounded && isJumping)
+        {
+             //fixed bug made by staying in the wall, therefore NEVER recalling OnCollisionEnter2D
+             isJumping = false;
         }
     }
 
@@ -61,7 +63,9 @@ public class playerJump : MonoBehaviour
     }
     public void jump(float force)
     {
+         playerInp.doJump = false;
         rb.AddForce(new Vector2(rb.linearVelocity.x, force));
+        isJumping = true;
     }
 
     private IEnumerator jumpQueue(float queueTime)

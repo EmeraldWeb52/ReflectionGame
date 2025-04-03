@@ -17,6 +17,10 @@ public class Door : MonoBehaviour
          {
              collision.transform.position = Position;
          }
+         else
+         {
+              this.GetComponent<Collider2D>();
+         }
     }
 
     public void Open()
