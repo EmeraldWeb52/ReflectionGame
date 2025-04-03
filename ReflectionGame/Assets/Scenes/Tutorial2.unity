@@ -53791,6 +53791,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4074175635071605920, guid: abb4b7c277bb7b948992706f179a958f, type: 3}
+      propertyPath: sceneToLoad
+      value: Level2
+      objectReference: {fileID: 0}
     - target: {fileID: 8655054763061373434, guid: abb4b7c277bb7b948992706f179a958f, type: 3}
       propertyPath: m_Name
       value: OverMagiced0000_0
