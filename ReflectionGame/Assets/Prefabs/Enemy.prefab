@@ -100,6 +100,8 @@ GameObject:
   - component: {fileID: 6839128550137598740}
   - component: {fileID: 5391693254153124085}
   - component: {fileID: 2372524055601353985}
+  - component: {fileID: 1205915832784506611}
+  - component: {fileID: 6225851194504416219}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -220,3 +222,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d82e303cd7bc1694e9c2eb2dd822aef1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1205915832784506611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063132857459009973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18a2c0dcd646e2247af0ae902b634d46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  patrolpoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  movespeed: 10
+  PatrolDestination: 0
+--- !u!114 &6225851194504416219
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4063132857459009973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5be4f70818270543ab532da13e3d641, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damage: 20
+  playerHealth: {fileID: 0}

@@ -161,6 +161,9 @@ MonoBehaviour:
   shootingPoint: {fileID: 8550741662254797875}
   anim: {fileID: 8775950550662002587}
   boomAnim: {fileID: 5630891795543327418}
+  ps: {fileID: 7644889037493505994}
+  range: 40
+  shootSize: 0.4
 --- !u!1 &5713030510499678457
 GameObject:
   m_ObjectHideFlags: 0
@@ -239,7 +242,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 4039
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -290,7 +293,7 @@ ParticleSystem:
   emitterVelocityMode: 1
   looping: 0
   prewarm: 0
-  playOnAwake: 1
+  playOnAwake: 0
   useUnscaledTime: 0
   autoRandomSeed: 1
   startDelay:
@@ -5176,7 +5179,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: f07aa941e8864eb40aafafbbbbd635dd, type: 3}
   m_Resource: {fileID: 8300000, guid: f07aa941e8864eb40aafafbbbbd635dd, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0

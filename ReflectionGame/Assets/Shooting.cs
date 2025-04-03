@@ -9,9 +9,15 @@ public class Shooting : MonoBehaviour
      bool isReset = true;
      [SerializeField] Animator anim;
      [SerializeField] Animator boomAnim;
+     [SerializeField] ParticleSystem ps;
+
+     [SerializeField] float range = 40f;
+     [SerializeField] float shootSize = 0.4f;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+         boomAnim.SetTrigger("Boom");
+         isReset = false;
          StartCoroutine(TriggerReset());
     }
 
@@ -36,6 +42,7 @@ public class Shooting : MonoBehaviour
     }
     void Shootingness()
     {
+         if (ps) ps.Play();
          isReset = false;
          if (boomAnim) boomAnim.SetTrigger("Boom");
          shooter.Play();
@@ -55,6 +62,7 @@ public class Shooting : MonoBehaviour
                         }
                    }
                    Collider2D Victim = raycastHit.collider;
+                   if (Victim.gameObject.GetComponent<PlayerHealth>()) StartCoroutine(epicDamage(Victim.gameObject.GetComponent<PlayerHealth>(), 50));
                    if (Victim.gameObject.GetComponent<Breakable>())
                    {
                         Instantiate(Explosionir.stExplosion, raycastHit.collider.transform.position, Quaternion.Euler(0,0,0)).transform.localScale /= 1.1f;
@@ -67,5 +75,18 @@ public class Shooting : MonoBehaviour
               }
          }
           anim.SetBool("Shot", false);
+    }
+    IEnumerator epicDamage(PlayerHealth player, int damage)
+    {
+         Time.timeScale = 0.01f;
+         yield return new WaitForSeconds(0.5f * Time.timeScale);
+         player.TakeDamage(damage);
+         Time.timeScale = 1f;
+    }
+    void OnDrawGizmos()
+    {
+         Gizmos.color = Color.red;
+         Gizmos.DrawRay((Vector2)shootingPoint.position + (Vector2)shootingPoint.up * shootSize, shootingPoint.right * range);
+         Gizmos.DrawRay((Vector2)shootingPoint.position + -(Vector2)shootingPoint.up * shootSize, shootingPoint.right * range);
     }
 }
