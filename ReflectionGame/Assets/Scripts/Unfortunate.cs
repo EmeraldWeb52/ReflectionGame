@@ -15,7 +15,7 @@ public class Unfortunate : MonoBehaviour
          if (Crytp && -379f >this.transform.position.y)
          {
               Instantiate(Crytp, this.transform.position + this.transform.right * 100, Quaternion.Euler(0,0,0));
-              Destroy(this.gameObject.GetComponent<Rigidbody2D>());
+              if (this.gameObject.GetComponent<Rigidbody2D>()) Destroy(this.gameObject.GetComponent<Rigidbody2D>());
               Destroy(this);
          }
     }
