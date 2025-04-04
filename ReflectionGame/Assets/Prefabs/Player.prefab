@@ -417,9 +417,7 @@ MonoBehaviour:
   isGrounded: 0
   jumpQueueTime: 0.15
   jumpSounds:
-  - {fileID: 8300000, guid: 29ba56fb85777ba4ebbe806f737cc74d, type: 3}
-  - {fileID: 8300000, guid: 70efb66f1f624004c9ac5b11cc5e80bd, type: 3}
-  - {fileID: 8300000, guid: 7470da9b50d7e2b4b91bee79c0a17c70, type: 3}
+  - {fileID: 8300000, guid: 60bbbb309edb3b540a835c0ddbb5c36c, type: 3}
   mainJumpSounds: {fileID: 0}
 --- !u!114 &2755890961150960881
 MonoBehaviour:
